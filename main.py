@@ -1,5 +1,5 @@
-# Импортируем модуль models из django.db
 from django.db import models
+from datetime import datetime, timedelta
 
 # Создаем модель «Клиент»
 class Client(models.Model):
@@ -180,3 +180,15 @@ def delete_order(order_id):
     order.delete()
     # Возвращаем сообщение об успешном удалении
     return f"Заказ №{order.id} удален"
+
+def get_client_orders_by_time(client_id, time_range):
+    # Возвращает список уникальных товаров, заказанных клиентом за указанный временной диапазон
+    client = Client.objects.get(id=client_id)
+    end_date = datetime.now()
+    start_date = end_date - timedelta(days=time_range)
+    orders = Order.objects.filter(client=client, date_ordered__range=[start_date, end_date]).order_by('-date_ordered').distinct()
+    products = []
+    for order in orders:
+        products.extend(order.products.all())
+    unique_products = set(products)
+    return list(unique_products)
