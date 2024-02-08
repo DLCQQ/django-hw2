@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина товаров</title>
+</head>
+<body>
+    <h1>Корзина товаров</h1>
+    <ul id="cartItems"></ul>
+
+    <script>
+        // Функция для обновления корзины
+        function updateCart(item) {
+            // Здесь можно обновить данные в хранилище (localStorage или sessionStorage)
+            // Например, добавить товар в массив или обновить существующие данные
+            addToStorage(item);
+            displayCartItems();
+        }
+
+        // Функция для добавления товара в хранилище
+        function addToStorage(item) {
+            const existingItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            existingItems.push(item);
+            localStorage.setItem('cartItems', JSON.stringify(existingItems));
+        }
+
+        // Функция для отображения товаров в корзине
+        function displayCartItems() {
+            const cartList = document.getElementById('cartItems');
+            cartList.innerHTML = ''; // Очищаем список перед обновлением
+
+            const storedItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            storedItems.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.name} - ${item.price} рублей`;
+                cartList.appendChild(listItem);
+            });
+        }
+
+        // При загрузке страницы отобразим сохраненные товары
+        displayCartItems();
+    </script>
+</body>
