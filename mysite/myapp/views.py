@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Client, Product, Order
+from django.views.generic import ListView
+from .forms import ProductForm
 
 def home(request):
     return render(request, 'home.html')
@@ -28,3 +30,26 @@ def save_client_data(request):
         return redirect('home')
     else:
         return render(request, 'client_data_form.html')
+    
+
+class AllOrdersProductsView(ListView):
+    model = Product
+    template_name = 'all_orders_products.html' 
+    context_object_name = 'order_products'  # Замените на имя контекстной переменной
+
+    def get_queryset(self):
+        # Получаем значение pk из URL-параметра
+        order_id = self.kwargs['pk']
+        # Запрос к модели OrderProduct для всех продуктов с указанным order_id
+        return Product.objects.filter(order_id=order_id)
+    
+
+def upload_product(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            # Дополнительные действия после сохранения формы
+    else:
+        form = ProductForm()
+    return render(request, 'product_form.html', {'form': form})

@@ -24,6 +24,19 @@
 <body>
     <h1>Каталог товаров</h1>
     <div class="product">
+        {% load static %}
+        {% with image_width=500 %}
+            <img src="{% static 'images/sm.png' %}" alt="Смартфон" width="{% widthratio image_width 500 100 %}">
+        {% endwith %}
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Сохранить</button>
+        </form>
+
         <h3>Смартфон</h3>
         <p>Мощный смартфон с высокой производительностью и камерой высокого разрешения.</p>
         <p>Цена: 12000 рублей</p>
@@ -32,6 +45,17 @@
         <button onclick="addToCart('Смартфон', 12000)">Добавить в корзину</button>
     </div>
     <div class="product">
+        {% load static %}
+        {% with image_width=500 %}
+            <img src="{% static 'images/nout.png' %}" alt="Ноутбук" width="{% widthratio image_width 500 100 %}">
+        {% endwith %}
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Сохранить</button>
+        </form>
+
         <h3>Ноутбук</h3>
         <p>Легкий и компактный ноутбук для работы и развлечений.</p>
         <p>Цена: 58000 рублей</p>
@@ -40,6 +64,17 @@
         <button onclick="addToCart('Ноутбук', 58000)">Добавить в корзину</button>
     </div>
     <div class="product">
+        {% load static %}
+        {% with image_width=500 %}
+            <img src="{% static 'images/foto.png' %}" alt="Фотокамера" width="{% widthratio image_width 500 100 %}">
+        {% endwith %}
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Сохранить</button>
+        </form>
+
         <h3>Фотокамера</h3>
         <p>Профессиональная фотокамера с возможностью съемки в RAW формате.</p>
         <p>Цена: 120000 рублей</p>
@@ -49,6 +84,17 @@
     </div>
     <div class="product">
         <h3>Принтер</h3>
+        {% load static %}
+        {% with image_width=500 %}
+            <img src="{% static 'images/print.png' %}" alt="Принтер" width="{% widthratio image_width 500 100 %}">
+        {% endwith %}
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Сохранить</button>
+        </form>
+
         <p>Лазерный принтер для печати документов.</p>
         <p>Цена: 6000 рублей</p>
         <p>250 шт</p>
@@ -56,6 +102,17 @@
         <button onclick="addToCart('Принтер', 6000)">Добавить в корзину</button>
     </div>
     <div class="product">
+        {% load static %}
+        {% with image_width=500 %}
+            <img src="{% static 'images/ven.png' %}" alt="Вентелятор" width="{% widthratio image_width 500 100 %}">
+        {% endwith %}
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Сохранить</button>
+        </form>
+
         <h3>Вентилятор</h3>
         <p>Переносной вентилятор для охлаждения в жаркие дни.</p>
         <p>Цена: 5400 рублей</p>
@@ -64,6 +121,17 @@
         <button onclick="addToCart('Вентилятор', 5400)">Добавить в корзину</button>
     </div>
     <div class="product">
+        {% load static %}
+        {% with image_width=500 %}
+            <img src="{% static 'images/coffe.png' %}" alt="Кофемашина" width="{% widthratio image_width 500 100 %}">
+        {% endwith %}
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Сохранить</button>
+        </form>
+
         <h3>Кофемашина</h3>
         <p>Автоматическая кофемашина для приготовления вкусного кофе.</p>
         <p>Цена: 20000 рублей</p>
@@ -73,6 +141,17 @@
     </div>
     <div class="product">
         <h3>Монитор</h3>
+        {% load static %}
+        {% with image_width=500 %}
+            <img src="{% static 'images/mon.png' %}" alt="Монитор" width="{% widthratio image_width 500 100 %}">
+        {% endwith %}
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Сохранить</button>
+        </form>
+
         <p>Широкоформатный монитор для работы и развлечений.</p>
         <p>Цена: 18000 рублей</p>
         <p>200 шт</p>
@@ -80,26 +159,24 @@
         <button onclick="addToCart('Монитор', 18000)">Добавить в корзину</button>
     </div>
     <div class="product">
+        {% load static %}
+        {% with image_width=500 %}
+            <img src="{% static 'images/tele.png' %}" alt="Телевизор" width="{% widthratio image_width 500 100 %}">
+        {% endwith %}
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Сохранить</button>
+        </form>
+
         <h3>Телевизор</h3>
         <p>4K телевизор с большим экраном и качественной картинкой.</p>
         <p>Цена: 50000 рублей</p>
         <p>68 шт</p>
         <p>товар добавлен 20.12.2023</p>
         <button onclick="addToCart('Телевизор', 50000)">Добавить в корзину</button>
-    <!-- </div>
 
-    <ul id="cartItems"></ul>
-
-    <script>
-        // Функция для добавления товара в корзину
-        function addToCart(productName, price) {
-            const item = {
-                name: productName,
-                price: price
-            };
-            // Добавляем товар в массив корзины
-            updateCart(item); -->
-        <!-- } -->
     </script>
 </body>
 </html>
