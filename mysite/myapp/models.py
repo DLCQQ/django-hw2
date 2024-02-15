@@ -33,11 +33,23 @@ class Product(models.Model):
 #     def __str__(self):
 #         return self.name
 
+# class Order(models.Model):
+#     client = models.ForeignKey(Client, on_delete=models.CASCADE)
+#     products = models.ManyToManyField(Product)
+#     total_amount = models.DecimalField(max_digits=10, decimal_places=2)
+#     order_date = models.DateTimeField(auto_now_add=True)
+
+
 class Order(models.Model):
-    client = models.ForeignKey(Client, on_delete=models.CASCADE)
-    products = models.ManyToManyField(Product)
-    total_amount = models.DecimalField(max_digits=10, decimal_places=2)
-    order_date = models.DateTimeField(auto_now_add=True)
+    date = models.DateField(auto_now_add=True)
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField()
+
+
+
 
     def __str__(self):
         return f"Order #{self.id} by {self.client.name}"
