@@ -193,3 +193,24 @@ def login(request):
 
 def home(request):
     return render(request, 'home.html')
+
+
+def client_list(request):
+    clients = Client.objects.all()
+    return render(request, 'client_list.html', {'clients': clients})
+
+def add_new_client(request):
+    # Создаем нового клиента
+    client = Client(name='Имя клиента', email='email@example.com', phone_number='1234567890', address='Адрес клиента')
+    client.save()
+
+    return render(request, 'client_added.html', {'client': client})
+
+
+def product_detail(request, product_id):
+    product = Product.objects.get(id=product_id)
+    return render(request, 'product_detail.html', {'product': product})
+
+def order_list(request):
+    orders = Order.objects.all()
+    return render(request, 'order_list.html', {'orders': orders})
