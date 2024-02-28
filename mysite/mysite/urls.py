@@ -18,7 +18,7 @@ urlpatterns = [
     path('my_view/', views.my_view, name='my_view'),
     path('product/<int:product_id>/', views.product_detail, name='product_detail'),
     path('orders_list/', views.order_list, name='order_list'),
-    path('__debug__/', include('debug_toolbar.urls'))
+    #path('__debug__/', include('debug_toolbar.urls'))
     
     
 ]
