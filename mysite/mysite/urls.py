@@ -20,5 +20,5 @@ urlpatterns = [
     path('orders_list/', views.order_list, name='order_list'),
     #path('__debug__/', include('debug_toolbar.urls'))
     
-    
+     
 ]
