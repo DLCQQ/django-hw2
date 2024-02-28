@@ -31,7 +31,7 @@ CSRF_COOKIE_SECURE = True
 ALLOWED_HOSTS = [
     '10.13.88.78',
     '127.0.0.1',
-    'dlc.pythonanywhere.com'
+    'DLCQQ.pythonanywhere.com'
 
 ]
 
@@ -93,7 +93,14 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': 'DLCQQ$default',
+        'USER': 'DCLQQ',
+        'PASSWORD': os.getenv('MYSQL_PASSWORD'),
+        'HOST': 'DLCQQ.mysql.pythonanywhere-services.com',
+        'OPTIONS': {
+            'init_command': "SET NAMES 'utf8mb4';SET sql_mode='STRICT_TRANS_TABLE'",
+            'charset': 'utf8mb4',
+        },
     }
 }
 
