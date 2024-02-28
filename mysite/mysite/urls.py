@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from myapp import views
 from myapp.views import AllOrdersProductsView
 from django.contrib.auth import views as auth_views
@@ -16,6 +16,9 @@ urlpatterns = [
     path('client/', views.client_list, name='client_list'),
     path('add_client/', views.add_new_client, name='add_client'),
     path('my_view/', views.my_view, name='my_view'),
+    path('product/<int:product_id>/', views.product_detail, name='product_detail'),
+    path('orders_list/', views.order_list, name='order_list'),
+    path('__debug__/', include('debug_toolbar.urls'))
     
     
 ]
